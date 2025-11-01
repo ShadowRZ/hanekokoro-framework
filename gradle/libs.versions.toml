@@ -1,0 +1,31 @@
+[versions]
+agp = "8.13.0"
+compose-multiplatform = "1.9.1"
+decompose = "3.4.0"
+essenty = "2.5.0"
+kotlin = "2.2.21"
+kotlinpoet = "2.2.0"
+ksp = "2.3.0"
+metro = "0.7.2"
+androidx-lifecycle = "2.9.4"
+maven-publish = "0.34.0"
+# Android versions
+android-minSdk = "21"
+android-compileSdk = "36"
+
+[libraries]
+androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime", version.ref = "androidx-lifecycle" }
+decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
+kotlinpoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
+ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
+metro-runtime = { group = "dev.zacsweers.metro", name = "runtime", version.ref = "metro" }
+
+[plugins]
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
