@@ -54,8 +54,8 @@ mavenPublishing {
     coordinates(group.toString(), "runtime", version.toString())
 
     pom {
-        name = "Hanekokoro Framework"
-        description = "Hanekokoro Framework Runtime"
+        name = "Hanekokoro Framework Runtime"
+        description = "Runtime code for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 

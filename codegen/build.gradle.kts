@@ -23,8 +23,8 @@ mavenPublishing {
     coordinates(group.toString(), "codegen", version.toString())
 
     pom {
-        name = "Hanekokoro Framework"
-        description = "Hanekokoro Framework Codegen"
+        name = "Hanekokoro Framework Codegen"
+        description = "KSP based @ContributesComponent code generator in Hanekokoro Framework "
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 
