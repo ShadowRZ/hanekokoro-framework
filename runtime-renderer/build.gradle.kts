@@ -14,7 +14,7 @@ version = "0.2.0"
 kotlin {
     jvm()
     android {
-        namespace = "io.github.shadowrz.hanekokoro.framework.runtime.compose"
+        namespace = "io.github.shadowrz.hanekokoro.framework.runtime.renderer"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -39,7 +39,6 @@ kotlin {
             api(project(":runtime-component"))
             implementation(compose.runtime)
             implementation(compose.ui)
-            implementation(libs.decompose)
         }
     }
 }
@@ -49,11 +48,11 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "runtime-compose", version.toString())
+    coordinates(group.toString(), "runtime-renderer", version.toString())
 
     pom {
-        name = "Hanekokoro Framework Runtime Compose"
-        description = "Compose Runtime code for Hanekokoro Framework"
+        name = "Hanekokoro Framework Runtime Renderer"
+        description = "Renderer Runtime code for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 
