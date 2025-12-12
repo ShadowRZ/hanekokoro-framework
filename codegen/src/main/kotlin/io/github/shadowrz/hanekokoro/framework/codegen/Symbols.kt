@@ -17,12 +17,12 @@ internal class Symbols(
     }
 
     object Names {
-        val GenericComponent = ClassName("io.github.shadowrz.hanekokoro.framework.runtime", "GenericComponent")
-        val GenericComponentFactory = ClassName("io.github.shadowrz.hanekokoro.framework.runtime", "GenericComponent", "Factory")
+        val Component = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.component", "Component")
+        val ComponentFactory = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.component", "Component", "Factory")
         val binding = ClassName("dev.zacsweers.metro", "binding")
         val Modifier = ClassName("androidx.compose.ui", "Modifier")
         val Composable = ClassName("androidx.compose.runtime", "Composable")
-        val Plugin = ClassName("io.github.shadowrz.hanekokoro.framework.runtime", "Plugin")
+        val Plugin = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.plugin", "Plugin")
         val ComponentUI = ClassName("io.github.shadowrz.hanekokoro.framework.runtime", "ComponentUI")
     }
 }

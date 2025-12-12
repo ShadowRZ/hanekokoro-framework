@@ -31,7 +31,9 @@ import dev.zacsweers.metro.ClassKey
 import dev.zacsweers.metro.ContributesIntoMap
 import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.Origin
+import io.github.shadowrz.hanekokoro.framework.annotations.ComponentKey
 import io.github.shadowrz.hanekokoro.framework.annotations.ContributesComponent
+import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
 
 class HanekokoroFrameworkSymbolProcessor(
     private val codeGenerator: CodeGenerator,
@@ -39,7 +41,7 @@ class HanekokoroFrameworkSymbolProcessor(
 ) : SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
         val symbols = resolver
-            .getSymbolsWithAnnotation(ContributesComponent::class.qualifiedName!!)
+            .getSymbolsWithAnnotation(HanekokoroInject.ContributesComponent::class.qualifiedName!!)
         val (valid, invalid) = symbols.partition { it.validate() }
 
         if (valid.isEmpty()) return invalid
@@ -56,7 +58,7 @@ class HanekokoroFrameworkSymbolProcessor(
     private fun generateComponentAssistedFactory(klass: KSClassDeclaration) {
         val packageName = klass.containingFile!!.packageName.asString()
         val className = "${klass.simpleName.asString()}_AssistedFactory"
-        val contributionAnnotations = klass.getKSAnnotationsByType(ContributesComponent::class)
+        val contributionAnnotations = klass.getKSAnnotationsByType(HanekokoroInject.ContributesComponent::class)
         val primaryConstructor = klass.primaryConstructor!!
         val assistedParamters = primaryConstructor.parameters.filter { it.isAnnotationPresent(Assisted::class) }
 
@@ -97,9 +99,9 @@ class HanekokoroFrameworkSymbolProcessor(
                 TypeSpec
                     .interfaceBuilder(className)
                     .apply {
-                        addSuperinterface(Symbols.Names.GenericComponentFactory.plusParameter(assistedParamters[0].type.toTypeName()))
+                        addSuperinterface(Symbols.Names.ComponentFactory.plusParameter(assistedParamters[0].type.toTypeName()))
                         addAnnotation(AnnotationSpec.builder(Origin::class).addMember("%T::class", klass.toClassName()).build())
-                        addAnnotation(AnnotationSpec.builder(ClassKey::class).addMember("%T::class", klass.toClassName()).build())
+                        addAnnotation(AnnotationSpec.builder(ComponentKey::class).addMember("%T::class", klass.toClassName()).build())
                         contributionAnnotations.forEach { annotation ->
                             val scope = annotation.arguments.single { it.name?.asString() == "scope" }.value as KSType
 
@@ -107,7 +109,7 @@ class HanekokoroFrameworkSymbolProcessor(
                                 AnnotationSpec
                                     .builder(ContributesIntoMap::class)
                                     .addMember("scope = %T::class", scope.toTypeName())
-                                    .addMember("binding = %L", GenericComponentFactoryBindingAnnotation)
+                                    .addMember("binding = %L", ComponentFactoryBindingAnnotation)
                                     .build(),
                             )
                         }
@@ -127,9 +129,7 @@ class HanekokoroFrameworkSymbolProcessor(
                                         ParameterSpec
                                             .builder(
                                                 "parent",
-                                                Symbols.Names.GenericComponent
-                                                    .plusParameter(STAR)
-                                                    .copy(nullable = true),
+                                                Symbols.Names.Component.copy(nullable = true),
                                             ).build(),
                                         ParameterSpec
                                             .builder(
@@ -229,10 +229,10 @@ class HanekokoroFrameworkSymbolProcessor(
     }
 
     private companion object {
-        val GenericComponentFactoryBindingAnnotation = AnnotationSpec
+        val ComponentFactoryBindingAnnotation = AnnotationSpec
             .builder(
                 Symbols.Names.binding.plusParameter(
-                    Symbols.Names.GenericComponentFactory.plusParameter(STAR),
+                    Symbols.Names.ComponentFactory.plusParameter(STAR),
                 ),
             ).build()
         val ComponentUIFactoryBindingAnnotation = AnnotationSpec

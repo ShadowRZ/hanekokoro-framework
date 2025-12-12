@@ -1,20 +1,20 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.maven.publish)
 }
 
 group = "io.github.shadowrz.hanekokoro.framework"
-version = "0.2.0"
+version = "0.1.0"
 
 kotlin {
     jvm()
     android {
-        namespace = "io.github.shadowrz.hanekokoro.framework.runtime"
+        namespace = "io.github.shadowrz.hanekokoro.framework.integration"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -36,14 +36,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":runtime-component"))
-            api(project(":runtime-context"))
-            api(project(":runtime-core"))
-            api(project(":runtime-lifecycle"))
-            api(project(":runtime-plugin"))
-            api(project(":runtime-presenter"))
             implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(libs.androidx.lifecycle.runtime)
             implementation(libs.decompose)
+            implementation(libs.essenty.lifecycle)
         }
     }
 }
@@ -53,11 +50,11 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "runtime", version.toString())
+    coordinates(group.toString(), "integration", version.toString())
 
     pom {
-        name = "Hanekokoro Framework Runtime"
-        description = "Runtime code for Hanekokoro Framework"
+        name = "Hanekokoro Framework Integration"
+        description = "Application integration for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 
