@@ -6,7 +6,7 @@ import kotlin.reflect.KClass
 // Based on Slack's implmentation.
 
 @Stable
-class HanekokoroContext internal constructor(
+class HanekokoroContext(
     val parent: HanekokoroContext?,
     private val tags: MutableMap<KClass<*>, Any> = mutableMapOf(),
 ) {

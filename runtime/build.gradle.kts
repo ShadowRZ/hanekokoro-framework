@@ -38,7 +38,6 @@ kotlin {
         commonMain.dependencies {
             api(project(":runtime-component"))
             api(project(":runtime-context"))
-            api(project(":runtime-core"))
             api(project(":runtime-lifecycle"))
             api(project(":runtime-plugin"))
             api(project(":runtime-presenter"))

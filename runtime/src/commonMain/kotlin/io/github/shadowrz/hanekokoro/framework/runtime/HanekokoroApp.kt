@@ -3,6 +3,7 @@ package io.github.shadowrz.hanekokoro.framework.runtime
 import androidx.compose.runtime.Immutable
 import com.arkivanov.decompose.ComponentContext
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
+import io.github.shadowrz.hanekokoro.framework.runtime.component.childComponent
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import kotlin.reflect.KClass
 
@@ -14,25 +15,27 @@ class HanekokoroApp private constructor(
 
     inline fun <reified C : Component> component(
         context: ComponentContext,
+        parent: Component,
         plugins: List<Plugin> = emptyList(),
-        parent: Component? = null,
-    ): C? =
+    ): C =
         component(
             klass = C::class,
             context = context,
-            plugins = plugins,
             parent = parent,
+            plugins = plugins,
         )
 
     @Suppress("UNCHECKED_CAST")
     fun <C : Component> component(
         klass: KClass<C>,
         context: ComponentContext,
+        parent: Component,
         plugins: List<Plugin> = emptyList(),
-        parent: Component? = null,
-    ): C? {
-        val factory = componentFactories[klass]
-        return factory?.create(context = context, plugins = plugins, parent = parent) as C?
+    ): C {
+        val factory = requireNotNull(componentFactories[klass])
+        return parent.childComponent(context = context) {
+            factory.create(it, plugins = plugins) as C
+        }
     }
 
     class Builder {

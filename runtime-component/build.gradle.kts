@@ -34,7 +34,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":runtime-core"))
+            api(project(":runtime-context"))
             api(project(":runtime-plugin"))
             implementation(libs.decompose)
         }

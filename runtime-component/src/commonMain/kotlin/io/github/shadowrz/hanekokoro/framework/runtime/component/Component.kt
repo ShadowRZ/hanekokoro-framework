@@ -1,22 +1,21 @@
 package io.github.shadowrz.hanekokoro.framework.runtime.component
 
 import com.arkivanov.decompose.ComponentContext
-import io.github.shadowrz.hanekokoro.framework.runtime.core.ParentOwner
+import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.PluginsOwner
 
 open class Component(
-    context: ComponentContext,
+    internal val context: HanekokoroContext,
     override val plugins: List<Plugin> = emptyList(),
-    override val parent: Component? = null,
-) : ComponentContext by context,
-    ParentOwner<Component>,
+) : ComponentContext by context.componentContext,
     PluginsOwner {
+    val parent: Component? = context.parentComponent
+
     fun interface Factory<out C : Component> {
         fun create(
-            context: ComponentContext,
+            context: HanekokoroContext,
             plugins: List<Plugin>,
-            parent: Component?,
         ): C
     }
 }
