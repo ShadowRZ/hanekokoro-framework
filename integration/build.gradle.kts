@@ -41,7 +41,7 @@ kotlin {
             api(project(":runtime-lifecycle"))
             api(project(":runtime-plugin"))
             api(project(":runtime-presenter"))
-            implementation(compose.runtime)
+            implementation(libs.androidx.compose.runtime)
             implementation(libs.decompose)
         }
     }

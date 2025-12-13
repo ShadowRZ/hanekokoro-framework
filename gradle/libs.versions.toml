@@ -8,6 +8,7 @@ kotlinpoet = "2.2.0"
 kotlinx-coroutines = "1.10.2"
 ksp = "2.3.3"
 metro = "0.8.2"
+androidx-compose = "1.9.5"
 androidx-lifecycle = "2.9.4"
 maven-publish = "0.35.0"
 # Android versions
@@ -15,6 +16,9 @@ android-minSdk = "21"
 android-compileSdk = "36"
 
 [libraries]
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "androidx-compose" }
+androidx-compose-runtime-annotation = { group = "androidx.compose.runtime", name = "runtime-annotation", version.ref = "androidx-compose" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "androidx-compose" }
 androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime", version.ref = "androidx-lifecycle" }
 decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
 essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
