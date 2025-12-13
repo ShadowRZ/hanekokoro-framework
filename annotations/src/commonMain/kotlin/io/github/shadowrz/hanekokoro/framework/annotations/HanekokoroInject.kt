@@ -10,8 +10,15 @@ annotation class HanekokoroInject(
 ) {
     @MustBeDocumented
     @Retention(AnnotationRetention.RUNTIME)
-    @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
+    @Target(AnnotationTarget.CLASS)
     annotation class ContributesComponent(
+        val scope: KClass<*>,
+    )
+
+    @MustBeDocumented
+    @Retention(AnnotationRetention.RUNTIME)
+    @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
+    annotation class ContributesRenderer(
         val scope: KClass<*>,
     )
 }

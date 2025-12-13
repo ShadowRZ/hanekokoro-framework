@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.shadowrz.hanekokoro.framework"
-version = "0.1.0"
+version = "0.2.0"
 
 dependencies {
     implementation(libs.kotlinpoet)
@@ -24,7 +24,7 @@ mavenPublishing {
 
     pom {
         name = "Hanekokoro Framework Codegen"
-        description = "KSP based @ContributesComponent code generator in Hanekokoro Framework "
+        description = "KSP code generator in Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 

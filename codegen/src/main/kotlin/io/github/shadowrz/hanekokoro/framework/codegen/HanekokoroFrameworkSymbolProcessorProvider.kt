@@ -6,5 +6,5 @@ import com.google.devtools.ksp.processing.SymbolProcessorProvider
 
 class HanekokoroFrameworkSymbolProcessorProvider : SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor =
-        HanekokoroFrameworkSymbolProcessor(codeGenerator = environment.codeGenerator, logger = environment.logger)
+        HanekokoroInjectSymbolProcessor(codeGenerator = environment.codeGenerator)
 }

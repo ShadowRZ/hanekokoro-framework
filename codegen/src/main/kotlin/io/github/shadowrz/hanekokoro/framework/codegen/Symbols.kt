@@ -8,6 +8,7 @@ internal class Symbols(
     resolver: Resolver,
 ) {
     val modifier = resolver.loadKSType(Names.Modifier.canonicalName)
+    val renderer = resolver.loadKSType(Names.Renderer.canonicalName)
 
     private fun Resolver.loadKSType(name: String): KSType = loadOptionalKSType(name) ?: error("Could not find $name in classpath")
 
@@ -17,12 +18,24 @@ internal class Symbols(
     }
 
     object Names {
-        val Component = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.component", "Component")
-        val ComponentFactory = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.component", "Component", "Factory")
-        val binding = ClassName("dev.zacsweers.metro", "binding")
+        val Component = ClassName(Packages.COMPONENT, "Component")
+        val ComponentFactory = ClassName(Packages.COMPONENT, "Component", "Factory")
+        val ComponentKey = ClassName(Packages.COMPONENT, "ComponentKey")
+        val Renderer = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.renderer", "Renderer")
+
+        // This helps in KotlinPoet.
+        val binding = ClassName(Packages.METRO, "binding")
         val Modifier = ClassName("androidx.compose.ui", "Modifier")
         val Composable = ClassName("androidx.compose.runtime", "Composable")
         val Plugin = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.plugin", "Plugin")
-        val ComponentUI = ClassName("io.github.shadowrz.hanekokoro.framework.runtime", "ComponentUI")
+    }
+
+    object Packages {
+        const val COMPONENT = "io.github.shadowrz.hanekokoro.framework.runtime.component"
+        const val METRO = "dev.zacsweers.metro"
+    }
+
+    object Placeholders {
+        const val CLASS_PLACEHOLDER = "%T::class"
     }
 }
