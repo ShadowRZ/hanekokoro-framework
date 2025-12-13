@@ -6,6 +6,7 @@ import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 
 abstract class HanekokoroAppComponent(
+    val hanekokoroApp: HanekokoroApp,
     context: HanekokoroContext,
     plugins: List<Plugin> = emptyList(),
 ) : Component(
@@ -13,11 +14,14 @@ abstract class HanekokoroAppComponent(
         plugins = plugins,
     ) {
     constructor(
+        hanekokoroApp: HanekokoroApp,
         context: ComponentContext,
         plugins: List<Plugin> = emptyList(),
-    ) : this(context = HanekokoroContext(context = context), plugins = plugins)
-
-    abstract val hanekokoroApp: HanekokoroApp
+    ) : this(
+        hanekokoroApp = hanekokoroApp,
+        context = HanekokoroContext(context = context),
+        plugins = plugins,
+    )
 
     init {
         super.context.hanekokoroApp = hanekokoroApp

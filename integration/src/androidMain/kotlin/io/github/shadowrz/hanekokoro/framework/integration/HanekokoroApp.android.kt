@@ -1,5 +1,6 @@
 package io.github.shadowrz.hanekokoro.framework.integration
 
+import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
@@ -14,21 +15,20 @@ import kotlin.reflect.KClass
 
 @Composable
 @NonRestartableComposable
-inline fun <T, reified C : Component> T.HanekokoroApp(
+inline fun <reified C : Component> ComponentActivity.HanekokoroApp(
     hanekokoroApp: HanekokoroApp,
     modifier: Modifier = Modifier,
     plugins: List<Plugin> = emptyList(),
     discardSavedState: Boolean = false,
     noinline isStateSavingAllowed: () -> Boolean = { true },
-) where T : SavedStateRegistryOwner, T : OnBackPressedDispatcherOwner, T : ViewModelStoreOwner, T : LifecycleOwner =
-    HanekokoroApp(
-        hanekokoroApp = hanekokoroApp,
-        discardSavedState = discardSavedState,
-        isStateSavingAllowed = isStateSavingAllowed,
-        plugins = plugins,
-        klass = C::class,
-        modifier = modifier,
-    )
+) = HanekokoroApp(
+    hanekokoroApp = hanekokoroApp,
+    discardSavedState = discardSavedState,
+    isStateSavingAllowed = isStateSavingAllowed,
+    plugins = plugins,
+    klass = C::class,
+    modifier = modifier,
+)
 
 @Composable
 fun <T, C : Component> T.HanekokoroApp(
