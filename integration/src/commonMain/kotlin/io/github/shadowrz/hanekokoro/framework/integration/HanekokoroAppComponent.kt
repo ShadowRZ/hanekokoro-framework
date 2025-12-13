@@ -16,15 +16,4 @@ abstract class HanekokoroAppComponent(
     init {
         super.context.hanekokoroApp = hanekokoroApp
     }
-
-    inline fun <reified C : Component> HanekokoroApp.component(
-        context: ComponentContext,
-        plugins: List<Plugin> = emptyList(),
-    ) {
-        this.component<C>(
-            context = context,
-            plugins = plugins,
-            parent = this@HanekokoroAppComponent,
-        )
-    }
 }

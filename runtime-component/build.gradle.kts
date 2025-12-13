@@ -36,7 +36,7 @@ kotlin {
         commonMain.dependencies {
             api(project(":runtime-context"))
             api(project(":runtime-plugin"))
-            implementation(libs.decompose)
+            api(libs.decompose)
             implementation(libs.metro.runtime)
         }
     }
