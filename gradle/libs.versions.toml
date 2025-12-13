@@ -1,4 +1,5 @@
 [versions]
+activity = "1.12.1"
 agp = "8.13.0"
 compose-multiplatform = "1.9.3"
 decompose = "3.4.0"
@@ -16,10 +17,12 @@ android-minSdk = "21"
 android-compileSdk = "36"
 
 [libraries]
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "androidx-compose" }
 androidx-compose-runtime-annotation = { group = "androidx.compose.runtime", name = "runtime-annotation", version.ref = "androidx-compose" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "androidx-compose" }
 androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
 essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
 essenty-instancekeeper = { group = "com.arkivanov.essenty", name = "instance-keeper", version.ref = "essenty" }

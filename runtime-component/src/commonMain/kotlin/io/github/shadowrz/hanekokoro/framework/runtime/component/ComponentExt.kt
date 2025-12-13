@@ -10,6 +10,5 @@ fun <C : Component> Component.childComponent(
     factory(
         HanekokoroContext(parent = this.context).apply {
             componentContext = context
-            parentComponent = this@childComponent
         },
     )

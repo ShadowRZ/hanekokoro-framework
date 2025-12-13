@@ -6,12 +6,10 @@ import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.PluginsOwner
 
 open class Component(
-    internal val context: HanekokoroContext,
+    val context: HanekokoroContext,
     override val plugins: List<Plugin> = emptyList(),
 ) : ComponentContext by context.componentContext,
     PluginsOwner {
-    val parent: Component? = context.parentComponent
-
     fun interface Factory<out C : Component> {
         fun create(
             context: HanekokoroContext,
