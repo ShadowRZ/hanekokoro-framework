@@ -56,7 +56,9 @@ class HanekokoroApp private constructor(
         context: ComponentContext,
         plugins: List<Plugin> = emptyList(),
     ): C {
-        val factory = requireNotNull(componentFactories[klass])
+        val factory = requireNotNull(componentFactories[klass]) {
+            "Could'nt find factory for ${klass.qualifiedName}, is it injected properly?"
+        }
         return factory.create(
             context = HanekokoroContext(context = context),
             plugins = plugins,
