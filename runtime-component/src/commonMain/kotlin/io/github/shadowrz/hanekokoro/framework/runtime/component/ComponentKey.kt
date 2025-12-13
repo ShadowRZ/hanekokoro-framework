@@ -1,7 +1,6 @@
-package io.github.shadowrz.hanekokoro.framework.annotations
+package io.github.shadowrz.hanekokoro.framework.runtime.component
 
 import dev.zacsweers.metro.MapKey
-import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 import kotlin.reflect.KClass
 
 @MustBeDocumented

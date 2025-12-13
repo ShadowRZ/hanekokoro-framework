@@ -1,4 +1,4 @@
-package io.github.shadowrz.hanekokoro.framework.runtime
+package io.github.shadowrz.hanekokoro.framework.runtime.coroutines
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.InstanceKeeperOwner

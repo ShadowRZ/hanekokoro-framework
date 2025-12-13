@@ -1,4 +1,4 @@
-package io.github.shadowrz.hanekokoro.framework.runtime
+package io.github.shadowrz.hanekokoro.framework.integration
 
 import androidx.compose.runtime.staticCompositionLocalOf
 

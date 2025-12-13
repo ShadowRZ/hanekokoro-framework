@@ -1,4 +1,4 @@
-package io.github.shadowrz.hanekokoro.framework.runtime
+package io.github.shadowrz.hanekokoro.framework.runtime.navigation
 
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.stack.ChildStack

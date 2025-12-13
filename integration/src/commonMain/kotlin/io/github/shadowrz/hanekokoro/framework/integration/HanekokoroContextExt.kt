@@ -1,4 +1,4 @@
-package io.github.shadowrz.hanekokoro.framework.runtime
+package io.github.shadowrz.hanekokoro.framework.integration
 
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 

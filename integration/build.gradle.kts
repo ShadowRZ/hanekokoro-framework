@@ -36,11 +36,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(project(":runtime-component"))
+            api(project(":runtime-context"))
+            api(project(":runtime-lifecycle"))
+            api(project(":runtime-plugin"))
+            api(project(":runtime-presenter"))
             implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(libs.androidx.lifecycle.runtime)
             implementation(libs.decompose)
-            implementation(libs.essenty.lifecycle)
         }
     }
 }

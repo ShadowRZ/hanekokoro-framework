@@ -1,8 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.maven.publish)
@@ -38,11 +36,12 @@ kotlin {
         commonMain.dependencies {
             api(project(":runtime-component"))
             api(project(":runtime-context"))
+            api(project(":runtime-coroutines"))
             api(project(":runtime-lifecycle"))
+            api(project(":runtime-navigation"))
             api(project(":runtime-plugin"))
             api(project(":runtime-presenter"))
-            implementation(compose.runtime)
-            implementation(libs.decompose)
+            api(project(":runtime-renderer"))
         }
     }
 }

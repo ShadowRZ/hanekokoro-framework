@@ -12,14 +12,14 @@ version = "0.2.0"
 kotlin {
     jvm()
     android {
-        namespace = "io.github.shadowrz.hanekokoro.framework.annotations"
+        namespace = "io.github.shadowrz.hanekokoro.framework.runtime.coroutines"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
         compilations.configureEach {
             compileTaskProvider.configure {
                 compilerOptions {
-                    jvmTarget = JvmTarget.JVM_1_8
+                    jvmTarget = JvmTarget.JVM_11
                 }
             }
         }
@@ -34,7 +34,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.metro.runtime)
+            api(libs.essenty.instancekeeper)
+            api(libs.kotlinx.coroutines.core)
         }
     }
 }
@@ -44,11 +45,11 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "annotations", version.toString())
+    coordinates(group.toString(), "runtime-coroutines", version.toString())
 
     pom {
-        name = "Hanekokoro Framework Annotations"
-        description = "Annotations for Hanekokoro Framework"
+        name = "Hanekokoro Framework Runtime Coroutines"
+        description = "Coroutines Runtime code for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 
