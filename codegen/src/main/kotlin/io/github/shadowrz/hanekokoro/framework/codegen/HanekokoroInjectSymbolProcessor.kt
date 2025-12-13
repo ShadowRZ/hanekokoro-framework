@@ -17,10 +17,8 @@ class HanekokoroInjectSymbolProcessor(
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
         val symbols = resolver
-            .getSymbolsWithAnnotation(HanekokoroInject.ContributesComponent::class.qualifiedName!!)
+            .getSymbolsWithAnnotation(HanekokoroInject::class.qualifiedName!!)
         val (valid, invalid) = symbols.partition { it.validate() }
-
-        if (valid.isEmpty()) return invalid
 
         valid.forEach {
             if (it is KSClassDeclaration) generateForClass(it)

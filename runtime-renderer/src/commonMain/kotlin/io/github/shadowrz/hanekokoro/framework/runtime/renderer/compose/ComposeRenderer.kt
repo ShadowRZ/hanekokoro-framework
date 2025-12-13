@@ -12,7 +12,7 @@ abstract class ComposeRenderer<C : Component> : Renderer<C> {
         message = "Do not call render() directly",
         level = DeprecationLevel.HIDDEN,
     )
-    override fun render(component: C) {
+    final override fun render(component: C) {
         error("Do not call render() directly")
     }
 

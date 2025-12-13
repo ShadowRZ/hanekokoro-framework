@@ -21,6 +21,7 @@ internal class Symbols(
         val Component = ClassName(Packages.COMPONENT, "Component")
         val ComponentFactory = ClassName(Packages.COMPONENT, "Component", "Factory")
         val ComponentKey = ClassName(Packages.COMPONENT, "ComponentKey")
+        val ComposeRenderer = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.renderer.compose", "ComposeRenderer")
         val Renderer = ClassName("io.github.shadowrz.hanekokoro.framework.runtime.renderer", "Renderer")
 
         // This helps in KotlinPoet.

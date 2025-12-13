@@ -75,12 +75,14 @@ class HanekokoroApp private constructor(
         val componentFactories: MutableMap<KClass<out Component>, Component.Factory<*>> = mutableMapOf()
         val renderers: MutableMap<KClass<out Component>, Renderer<*>> = mutableMapOf()
 
-        fun addComponentFactories(factories: Map<KClass<out Component>, Component.Factory<*>>) {
+        fun addComponentFactories(factories: Map<KClass<out Component>, Component.Factory<*>>): Builder {
             componentFactories += factories
+            return this
         }
 
-        fun addRenderers(renderers: Map<KClass<out Component>, Renderer<*>>) {
+        fun addRenderers(renderers: Map<KClass<out Component>, Renderer<*>>): Builder {
             this.renderers += renderers
+            return this
         }
 
         fun build(): HanekokoroApp = HanekokoroApp(this)

@@ -89,7 +89,7 @@ class ContributesRendererSymbolProcessor(
                 TypeSpec
                     .classBuilder(className)
                     .apply {
-                        addSuperinterface(Symbols.Names.Renderer.plusParameter(componentType))
+                        superclass(Symbols.Names.ComposeRenderer.plusParameter(componentType))
                         addAnnotation(
                             AnnotationSpec.builder(Origin::class).addMember(Symbols.Placeholders.CLASS_PLACEHOLDER, componentType).build(),
                         )

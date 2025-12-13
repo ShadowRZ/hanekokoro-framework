@@ -82,7 +82,7 @@ class ContributesComponentSymbolProcessor(
                 TypeSpec
                     .interfaceBuilder(className)
                     .apply {
-                        addSuperinterface(Symbols.Names.ComponentFactory.plusParameter(assistedParamters[0].type.toTypeName()))
+                        addSuperinterface(Symbols.Names.ComponentFactory.plusParameter(klass.toClassName()))
                         addAnnotation(AnnotationSpec.builder(Origin::class).addMember("%T::class", klass.toClassName()).build())
                         addAnnotation(
                             AnnotationSpec.builder(Symbols.Names.ComponentKey).addMember("%T::class", klass.toClassName()).build(),
