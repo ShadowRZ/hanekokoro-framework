@@ -32,6 +32,7 @@ import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.IntoMap
 import dev.zacsweers.metro.Origin
 import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
+import kotlin.reflect.KClass
 
 class ContributesRendererSymbolProcessor(
     private val codeGenerator: CodeGenerator,
@@ -46,8 +47,19 @@ class ContributesRendererSymbolProcessor(
         val resolveSymbols = Symbols(resolver)
 
         valid.forEach {
-            if (it is KSClassDeclaration) generateRendererBindingContainer(it)
-            if (it is KSFunctionDeclaration) generateRendererClass(it, resolveSymbols)
+            if (it is KSClassDeclaration) {
+                generateRendererBindingContainer(
+                    it,
+                    HanekokoroInject.ContributesRenderer::class,
+                )
+            }
+            if (it is KSFunctionDeclaration) {
+                generateRendererClass(
+                    it,
+                    resolveSymbols,
+                    HanekokoroInject.ContributesRenderer::class,
+                )
+            }
         }
 
         return invalid
@@ -56,6 +68,7 @@ class ContributesRendererSymbolProcessor(
     internal fun generateRendererClass(
         function: KSFunctionDeclaration,
         symbols: Symbols,
+        annotationKlass: KClass<out Annotation>,
     ) {
         if (!function.isAnnotatedWith(Symbols.Names.Composable)) {
             error(
@@ -66,7 +79,7 @@ class ContributesRendererSymbolProcessor(
         val className = "${function.simpleName.asString()}_ComposeRenderer"
 
         val componentType = function.parameters[0].type.toTypeName()
-        val contributionAnnotations = function.getKSAnnotationsByType(HanekokoroInject.ContributesRenderer::class)
+        val contributionAnnotations = function.getKSAnnotationsByType(annotationKlass)
 
         function.parameters[1].let {
             if (it.name?.asString() != "modifier") {
@@ -132,13 +145,16 @@ class ContributesRendererSymbolProcessor(
             .writeTo(codeGenerator, dependencies = Dependencies(true, function.containingFile!!))
     }
 
-    internal fun generateRendererBindingContainer(klass: KSClassDeclaration) {
+    internal fun generateRendererBindingContainer(
+        klass: KSClassDeclaration,
+        annotationKlass: KClass<out Annotation>,
+    ) {
         val componentType = componentType(klass)
 
         val rendererClass = klass.toClassName()
         val packageName = klass.containingFile!!.packageName.asString()
         val className = "${klass.simpleName.asString()}_RendererBindingContainer"
-        val contributionAnnotations = klass.getKSAnnotationsByType(HanekokoroInject.ContributesRenderer::class)
+        val contributionAnnotations = klass.getKSAnnotationsByType(annotationKlass)
 
         FileSpec.builder(packageName, className)
             .addType(

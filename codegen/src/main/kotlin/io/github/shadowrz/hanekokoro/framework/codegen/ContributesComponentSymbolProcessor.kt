@@ -27,6 +27,7 @@ import dev.zacsweers.metro.AssistedFactory
 import dev.zacsweers.metro.ContributesIntoMap
 import dev.zacsweers.metro.Origin
 import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
+import kotlin.reflect.KClass
 
 class ContributesComponentSymbolProcessor(
     private val codeGenerator: CodeGenerator,
@@ -39,17 +40,25 @@ class ContributesComponentSymbolProcessor(
         if (valid.isEmpty()) return invalid
 
         valid.forEach {
-            if (it is KSClassDeclaration) generateComponentAssistedFactory(it)
+            if (it is KSClassDeclaration) {
+                generateComponentAssistedFactory(
+                    it,
+                    HanekokoroInject.ContributesComponent::class,
+                )
+            }
         }
 
         return invalid
     }
 
     @OptIn(KspExperimental::class)
-    internal fun generateComponentAssistedFactory(klass: KSClassDeclaration) {
+    internal fun generateComponentAssistedFactory(
+        klass: KSClassDeclaration,
+        annotationKlass: KClass<out Annotation>,
+    ) {
         val packageName = klass.containingFile!!.packageName.asString()
         val className = "${klass.simpleName.asString()}_AssistedFactory"
-        val contributionAnnotations = klass.getKSAnnotationsByType(HanekokoroInject.ContributesComponent::class)
+        val contributionAnnotations = klass.getKSAnnotationsByType(annotationKlass)
         val primaryConstructor = klass.primaryConstructor!!
         val assistedParamters = primaryConstructor.parameters.filter { it.isAnnotationPresent(Assisted::class) }
 

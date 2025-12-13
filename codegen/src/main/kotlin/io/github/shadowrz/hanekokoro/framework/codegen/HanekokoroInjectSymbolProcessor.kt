@@ -30,10 +30,10 @@ class HanekokoroInjectSymbolProcessor(
 
     private fun generateForClass(klass: KSClassDeclaration) {
         if (klass.asStarProjectedType().extendsClass(Symbols.Names.Component)) {
-            componentProcessor.generateComponentAssistedFactory(klass)
+            componentProcessor.generateComponentAssistedFactory(klass, HanekokoroInject::class)
         }
         if (klass.asStarProjectedType().extendsClass(Symbols.Names.Renderer)) {
-            rendererProcessor.generateRendererBindingContainer(klass)
+            rendererProcessor.generateRendererBindingContainer(klass, HanekokoroInject::class)
         }
     }
 
@@ -41,6 +41,6 @@ class HanekokoroInjectSymbolProcessor(
         function: KSFunctionDeclaration,
         symbols: Symbols,
     ) {
-        rendererProcessor.generateRendererClass(function, symbols)
+        rendererProcessor.generateRendererClass(function, symbols, HanekokoroInject::class)
     }
 }
