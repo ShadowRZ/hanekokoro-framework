@@ -27,3 +27,5 @@ include(":runtime-navigation")
 include(":runtime-plugin")
 include(":runtime-presenter")
 include(":runtime-renderer")
+// Sample
+include(":sample:app")
