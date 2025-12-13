@@ -1,8 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.maven.publish)
@@ -14,7 +12,7 @@ version = "0.2.0"
 kotlin {
     jvm()
     android {
-        namespace = "io.github.shadowrz.hanekokoro.framework.runtime.presenter"
+        namespace = "io.github.shadowrz.hanekokoro.framework.markers"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -36,8 +34,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":markers"))
-            implementation(libs.androidx.compose.runtime)
+            implementation(libs.androidx.compose.runtime.annotation)
         }
     }
 }
@@ -47,11 +44,11 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "runtime-presenter", version.toString())
+    coordinates(group.toString(), "markers", version.toString())
 
     pom {
-        name = "Hanekokoro Framework Runtime Presenter"
-        description = "Presenter Runtime code for Hanekokoro Framework"
+        name = "Hanekokoro Framework Markers"
+        description = "Markers for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 

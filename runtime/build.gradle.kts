@@ -34,6 +34,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(project(":markers"))
             api(project(":runtime-component"))
             api(project(":runtime-context"))
             api(project(":runtime-coroutines"))

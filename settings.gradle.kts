@@ -17,6 +17,7 @@ rootProject.name = "hanekokoro-framework"
 include(":annotations")
 include(":codegen")
 include(":integration")
+include(":markers")
 include(":runtime")
 include(":runtime-component")
 include(":runtime-context")
