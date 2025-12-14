@@ -10,6 +10,10 @@ env:
 
 permissions: {}
 
+concurrency:
+  group: ${{ format('docs-{0}', github.ref)  }}
+  cancel-in-progress: true
+
 jobs:
   dokka-api:
     name: Dokka API
