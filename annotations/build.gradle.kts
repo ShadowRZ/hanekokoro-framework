@@ -1,8 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.kotlin.multiplatform.library)
+    id("io.github.shadowrz.hanekokoro.framework.internal.library")
     alias(libs.plugins.maven.publish)
 }
 
@@ -10,11 +9,13 @@ group = "io.github.shadowrz.hanekokoro.framework"
 version = "0.2.0"
 
 kotlin {
-    jvm()
+    jvm {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_1_8
+        }
+    }
     android {
         namespace = "io.github.shadowrz.hanekokoro.framework.annotations"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
 
         compilations.configureEach {
             compileTaskProvider.configure {
@@ -23,13 +24,6 @@ kotlin {
                 }
             }
         }
-    }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    compilerOptions {
-        allWarningsAsErrors = true
     }
 
     sourceSets {
