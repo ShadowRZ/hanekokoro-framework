@@ -34,8 +34,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.androidx.annotation)
             implementation(libs.androidx.compose.runtime.annotation)
-            implementation(libs.decompose)
         }
     }
 }

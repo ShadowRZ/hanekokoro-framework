@@ -1,6 +1,7 @@
 [versions]
 activity = "1.12.1"
 agp = "8.13.2"
+androidx-annotation = "1.9.1"
 androidx-compose = "1.9.5"
 androidx-lifecycle = "2.9.4"
 compose-multiplatform = "1.9.3"
@@ -22,6 +23,7 @@ android-minSdk = "21"
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidx-annotation" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "androidx-compose" }
 androidx-compose-runtime-annotation = { group = "androidx.compose.runtime", name = "runtime-annotation", version.ref = "androidx-compose" }

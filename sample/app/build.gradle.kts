@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
+group = "io.github.shadowrz.hanekokoro.framework.sample.app"
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
