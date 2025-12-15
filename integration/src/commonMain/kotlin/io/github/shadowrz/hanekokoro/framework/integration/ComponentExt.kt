@@ -8,4 +8,7 @@ inline fun <reified C : Component> Component.childComponent(
     context: ComponentContext,
     plugins: List<Plugin> = emptyList(),
     hanekokoroApp: HanekokoroApp? = null,
-) = (hanekokoroApp ?: this.context.hanekokoroApp).component<C>(context = context, parent = this, plugins = plugins)
+) = (hanekokoroApp ?: this.hanekokoroApp).component<C>(context = context, parent = this, plugins = plugins)
+
+val Component.hanekokoroApp: HanekokoroApp
+    get() = this.context.hanekokoroApp

@@ -1,6 +1,7 @@
 package io.github.shadowrz.hanekokoro.framework.integration
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.backhandler.BackDispatcher
@@ -11,6 +12,7 @@ import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 import io.github.shadowrz.hanekokoro.framework.runtime.navigation.OnBackPressedCallback
 
 @Composable
+@NonRestartableComposable
 fun <C : Component> HanekokoroRoot(
     hanekokoroApp: HanekokoroApp,
     context: DefaultComponentContext,
