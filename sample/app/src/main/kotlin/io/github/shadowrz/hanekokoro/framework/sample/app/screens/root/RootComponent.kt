@@ -26,6 +26,7 @@ class RootComponent(
 ) : HanekokoroAppComponent(
         hanekokoroApp = hanekokoroApp,
         context = context,
+        plugins = plugins,
     ) {
     internal val navigation: StackNavigation<NavTarget> = StackNavigation()
 

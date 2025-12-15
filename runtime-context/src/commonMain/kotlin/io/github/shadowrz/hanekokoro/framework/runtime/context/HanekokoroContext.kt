@@ -1,14 +1,14 @@
 package io.github.shadowrz.hanekokoro.framework.runtime.context
 
-import androidx.annotation.RestrictTo
 import androidx.compose.runtime.Stable
+import io.github.shadowrz.hanekokoro.framework.annotations.InternalHanekokoroApi
 import kotlin.reflect.KClass
 
 // Based on Slack's implmentation.
 
 @Stable
 class HanekokoroContext
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @InternalHanekokoroApi
     constructor(
         val parent: HanekokoroContext?,
         private val tags: MutableMap<KClass<*>, Any> = mutableMapOf(),

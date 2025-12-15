@@ -2,8 +2,10 @@ package io.github.shadowrz.hanekokoro.framework.integration
 
 import androidx.compose.runtime.Immutable
 import com.arkivanov.decompose.ComponentContext
+import io.github.shadowrz.hanekokoro.framework.annotations.InternalHanekokoroApi
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 import io.github.shadowrz.hanekokoro.framework.runtime.component.childComponent
+import io.github.shadowrz.hanekokoro.framework.runtime.component.component
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.runtime.renderer.Renderer
 import kotlin.reflect.KClass
@@ -27,6 +29,7 @@ class HanekokoroApp private constructor(
             plugins = plugins,
         )
 
+    @OptIn(InternalHanekokoroApi::class)
     @Suppress("UNCHECKED_CAST")
     fun <C : Component> component(
         klass: KClass<C>,
@@ -50,6 +53,7 @@ class HanekokoroApp private constructor(
             plugins = plugins,
         )
 
+    @OptIn(InternalHanekokoroApi::class)
     @Suppress("UNCHECKED_CAST")
     fun <C : Component> component(
         klass: KClass<C>,
@@ -59,9 +63,11 @@ class HanekokoroApp private constructor(
         val factory = requireNotNull(componentFactories[klass]) {
             "Could'nt find factory for ${klass.qualifiedName}, is it injected properly?"
         }
-        return factory.create(
-            context = HanekokoroContext(context = context),
-            plugins = plugins,
+        return component(
+            context = context,
+            factory = {
+                factory.create(it, plugins = plugins)
+            },
         ) as C
     }
 

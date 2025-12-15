@@ -16,7 +16,7 @@ kotlin {
             api(project(":runtime-context"))
             api(project(":runtime-plugin"))
             api(libs.decompose)
-            implementation(libs.androidx.annotation)
+            implementation(project(":annotations"))
             implementation(libs.metro.runtime)
         }
     }

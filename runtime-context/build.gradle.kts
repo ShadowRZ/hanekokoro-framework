@@ -13,7 +13,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.androidx.annotation)
+            implementation(project(":annotations"))
             implementation(libs.androidx.compose.runtime.annotation)
         }
     }
