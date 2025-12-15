@@ -37,9 +37,11 @@ class HanekokoroApp private constructor(
         parent: Component,
         plugins: List<Plugin> = emptyList(),
     ): C {
-        val factory = requireNotNull(componentFactories[klass])
+        val factory = requireNotNull(componentFactories[klass]) {
+            "Couldn't find factory for ${klass.qualifiedName}, is it injected properly?"
+        }
         return parent.childComponent(context = context) {
-            factory.create(it, plugins = plugins) as C
+            factory.create(it.apply { hanekokoroApp = this@HanekokoroApp }, plugins = plugins) as C
         }
     }
 
@@ -61,12 +63,12 @@ class HanekokoroApp private constructor(
         plugins: List<Plugin> = emptyList(),
     ): C {
         val factory = requireNotNull(componentFactories[klass]) {
-            "Could'nt find factory for ${klass.qualifiedName}, is it injected properly?"
+            "Couldn't find factory for ${klass.qualifiedName}, is it injected properly?"
         }
         return component(
             context = context,
             factory = {
-                factory.create(it, plugins = plugins)
+                factory.create(it.apply { hanekokoroApp = this@HanekokoroApp }, plugins = plugins)
             },
         ) as C
     }
@@ -75,7 +77,9 @@ class HanekokoroApp private constructor(
 
     @Suppress("UNCHECKED_CAST")
     fun <C : Component> renderer(klass: KClass<C>): Renderer<C> {
-        val renderer = requireNotNull(renderers[klass])
+        val renderer = requireNotNull(renderers[klass]) {
+            "Couldn't find renderer for ${klass.qualifiedName}, is it injected properly?"
+        }
         return renderer as Renderer<C>
     }
 

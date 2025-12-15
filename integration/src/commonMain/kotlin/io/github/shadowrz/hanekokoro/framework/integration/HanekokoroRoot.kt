@@ -38,11 +38,9 @@ internal fun <C : Component> HanekokoroRoot(
 ) = ProvideHanekokoroApp(hanekokoroApp) {
     val component = component(
         context = context,
-        factory = factory,
+        factory = { factory(it.apply { this.hanekokoroApp = hanekokoroApp }) },
         onBackPressedCallback = onBackPressedCallback,
-    ).apply {
-        this.context.hanekokoroApp = hanekokoroApp
-    }
+    )
     HanekokoroContent(component = component, modifier = modifier)
 }
 
