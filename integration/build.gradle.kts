@@ -20,6 +20,7 @@ kotlin {
             implementation(compose.ui)
             implementation(libs.androidx.compose.runtime)
             implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.decompose)
         }
 
