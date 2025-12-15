@@ -1,5 +1,6 @@
 package io.github.shadowrz.hanekokoro.framework.annotations
 
+@MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @RequiresOptIn(
     level = RequiresOptIn.Level.ERROR,

@@ -31,4 +31,6 @@ fun <C : Component> component(
         },
     )
 
-fun Component.onBackPressed() = this.context.onBackPressedCallback?.onBackPressed()
+fun Component.onBackPressed() {
+    this.context.onBackPressedCallback?.onBackPressed()
+}
