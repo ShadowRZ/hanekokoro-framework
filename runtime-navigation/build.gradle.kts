@@ -13,6 +13,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(project(":runtime-context"))
             api(libs.decompose)
             api(libs.kotlinx.coroutines.core)
         }

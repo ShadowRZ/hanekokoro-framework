@@ -14,6 +14,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":runtime-context"))
+            api(project(":runtime-navigation"))
             api(project(":runtime-plugin"))
             api(libs.decompose)
             implementation(project(":annotations"))
