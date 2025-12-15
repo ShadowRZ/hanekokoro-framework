@@ -8,8 +8,6 @@ import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.Assisted
 import dev.zacsweers.metro.AssistedInject
 import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
-import io.github.shadowrz.hanekokoro.framework.integration.HanekokoroApp
-import io.github.shadowrz.hanekokoro.framework.integration.HanekokoroAppComponent
 import io.github.shadowrz.hanekokoro.framework.integration.childComponent
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
@@ -21,10 +19,8 @@ import kotlinx.serialization.Serializable
 @HanekokoroInject(AppScope::class)
 class RootComponent(
     @Assisted context: HanekokoroContext,
-    @Assisted plugins: List<Plugin>,
-    hanekokoroApp: HanekokoroApp,
-) : HanekokoroAppComponent(
-        hanekokoroApp = hanekokoroApp,
+    @Assisted plugins: List<Plugin> = emptyList(),
+) : Component(
         context = context,
         plugins = plugins,
     ) {
