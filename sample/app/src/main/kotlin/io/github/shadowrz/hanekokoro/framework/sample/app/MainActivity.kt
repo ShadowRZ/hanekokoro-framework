@@ -15,6 +15,7 @@ import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.binding
 import dev.zacsweers.metrox.android.ActivityKey
 import io.github.shadowrz.hanekokoro.framework.integration.HanekokoroApp
+import io.github.shadowrz.hanekokoro.framework.integration.HanekokoroRoot
 import io.github.shadowrz.hanekokoro.framework.sample.app.screens.root.RootComponent
 import io.github.shadowrz.hanekokoro.framework.sample.app.ui.theme.SampleAppTheme
 
@@ -31,9 +32,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SampleAppTheme {
-                HanekokoroApp<RootComponent>(
+                HanekokoroRoot(
                     hanekokoroApp = hanekokoroApp,
-                )
+                ) {
+                    RootComponent(it)
+                }
             }
         }
     }
