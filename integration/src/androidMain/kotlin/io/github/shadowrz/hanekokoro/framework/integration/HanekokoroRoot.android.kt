@@ -1,5 +1,6 @@
 package io.github.shadowrz.hanekokoro.framework.integration
 
+import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
@@ -11,6 +12,7 @@ import com.arkivanov.decompose.defaultComponentContext
 import io.github.shadowrz.hanekokoro.framework.annotations.InternalHanekokoroApi
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
+import io.github.shadowrz.hanekokoro.framework.runtime.navigation.OnBackPressedCallback
 
 @OptIn(InternalHanekokoroApi::class)
 @Composable
@@ -32,3 +34,5 @@ fun <T, C : Component> T.HanekokoroRoot(
         onBackPressedCallback = onBackPressedDispatcher.asOnBackPressedCallback(),
         factory = factory,
     )
+
+internal fun OnBackPressedDispatcher.asOnBackPressedCallback() = OnBackPressedCallback { onBackPressed() }
