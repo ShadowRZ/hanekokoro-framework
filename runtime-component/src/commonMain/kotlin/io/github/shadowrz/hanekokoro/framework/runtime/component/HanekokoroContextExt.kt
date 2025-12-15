@@ -9,5 +9,5 @@ internal var HanekokoroContext.componentContext: ComponentContext
     set(value) = putTag(value)
 
 internal var HanekokoroContext.onBackPressedCallback: OnBackPressedCallback?
-    get() = tag() ?: parent?.tag()
+    get() = tag() ?: parent?.onBackPressedCallback
     set(value) = putTag(value)
