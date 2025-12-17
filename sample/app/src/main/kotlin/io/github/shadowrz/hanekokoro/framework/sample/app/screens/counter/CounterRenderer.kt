@@ -17,7 +17,6 @@ import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.Inject
 import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
-import io.github.shadowrz.hanekokoro.framework.runtime.component.onBackPressed
 import io.github.shadowrz.hanekokoro.framework.runtime.renderer.compose.ComposeRenderer
 import io.github.shadowrz.hanekokoro.framework.sample.app.screens.counter.icons.Back
 
@@ -40,7 +39,7 @@ class CounterRenderer : ComposeRenderer<CounterComponent>() {
                     },
                     navigationIcon = {
                         IconButton(
-                            onClick = component::onBackPressed,
+                            onClick = component::navigateUp,
                         ) {
                             Icon(
                                 Back,

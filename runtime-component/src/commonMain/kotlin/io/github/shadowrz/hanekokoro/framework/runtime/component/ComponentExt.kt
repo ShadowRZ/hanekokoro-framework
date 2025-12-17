@@ -14,6 +14,7 @@ fun <C : Component> Component.childComponent(
     factory(
         HanekokoroContext(parent = this.context).apply {
             componentContext = context
+            parentComponent = this@childComponent
             this.onBackPressedCallback = onBackPressedCallback
         },
     )
@@ -30,7 +31,3 @@ fun <C : Component> component(
             this.onBackPressedCallback = onBackPressedCallback
         },
     )
-
-fun Component.onBackPressed() {
-    this.context.onBackPressedCallback?.onBackPressed()
-}

@@ -3,6 +3,7 @@ package io.github.shadowrz.hanekokoro.framework.sample.app.screens.root
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.Assisted
@@ -60,7 +61,10 @@ class RootComponent(
         }
 
     internal fun onNavTarget(navTarget: NavTarget) {
-        println(navTarget)
         navigation.pushNew(navTarget)
+    }
+
+    override fun onNavigateUp(onComplete: (Boolean) -> Unit) {
+        navigation.pop(onComplete)
     }
 }
