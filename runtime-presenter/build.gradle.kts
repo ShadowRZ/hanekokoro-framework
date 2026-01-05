@@ -16,7 +16,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":markers"))
-            implementation(libs.androidx.compose.runtime)
+            implementation(libs.compose.runtime)
         }
     }
 }

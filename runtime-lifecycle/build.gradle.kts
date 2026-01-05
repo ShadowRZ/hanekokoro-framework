@@ -13,7 +13,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.lifecycle.runtime)
             implementation(libs.essenty.lifecycle)
         }
     }

@@ -17,8 +17,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":runtime-component"))
-            implementation(libs.androidx.compose.runtime)
-            implementation(compose.ui)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
         }
     }
 }

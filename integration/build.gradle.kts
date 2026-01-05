@@ -17,10 +17,10 @@ kotlin {
         commonMain.dependencies {
             api(project(":runtime"))
             implementation(project(":annotations"))
-            implementation(compose.ui)
-            implementation(libs.androidx.compose.runtime)
-            implementation(libs.androidx.lifecycle.runtime)
-            implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.runtime)
+            implementation(libs.lifecycle.runtime)
+            implementation(libs.lifecycle.runtime.compose)
             implementation(libs.decompose)
         }
 

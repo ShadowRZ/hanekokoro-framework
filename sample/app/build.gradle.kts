@@ -59,17 +59,12 @@ dependencies {
     implementation(project(":annotations"))
     implementation(project(":integration"))
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.preview)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.startup)
     implementation(libs.decompose.compose)
     implementation(libs.metrox.android)
-
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 }
