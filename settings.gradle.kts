@@ -29,3 +29,11 @@ include(":runtime-presenter")
 include(":runtime-renderer")
 // Sample
 include(":sample:app")
+
+gradle.lifecycle.afterProject {
+    pluginManager.withPlugin("signing") {
+        extensions.configure<SigningExtension> {
+            useGpgCmd()
+        }
+    }
+}
