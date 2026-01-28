@@ -14,7 +14,7 @@ lifecycle-multiplatform = "2.9.6"
 material3 = "1.4.0"
 material3-multiplatform = "1.9.0"
 maven-publish = "0.36.0"
-metro = "0.9.4"
+metro = "0.10.1"
 startup = "1.2.0"
 # Android versions
 android-compileSdk = "36"
