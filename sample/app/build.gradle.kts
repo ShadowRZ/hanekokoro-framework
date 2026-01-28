@@ -4,7 +4,7 @@ group = "io.github.shadowrz.hanekokoro.framework.sample.app"
 
 plugins {
     id("com.android.application")
-    kotlin("android")
+    // kotlin("android")
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
