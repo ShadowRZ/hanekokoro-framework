@@ -19,7 +19,7 @@ kotlin {
         compilations.configureEach {
             compileTaskProvider.configure {
                 compilerOptions {
-                    jvmTarget = JvmTarget.JVM_1_8
+                    jvmTarget = JvmTarget.JVM_11
                 }
             }
         }
