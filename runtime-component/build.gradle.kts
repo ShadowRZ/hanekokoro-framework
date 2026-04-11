@@ -18,6 +18,7 @@ kotlin {
             api(project(":runtime-plugin"))
             api(libs.decompose)
             implementation(project(":annotations"))
+            implementation(libs.compose.runtime)
             implementation(libs.metro.runtime)
         }
     }
