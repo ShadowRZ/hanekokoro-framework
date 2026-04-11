@@ -1,8 +1,8 @@
 package io.github.shadowrz.hanekokoro.framework.runtime.component
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.essenty.backhandler.BackDispatcher
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
-import io.github.shadowrz.hanekokoro.framework.runtime.navigation.OnBackPressedCallback
 
 internal var HanekokoroContext.componentContext: ComponentContext
     get() = checkNotNull(tag())
@@ -12,6 +12,6 @@ internal var HanekokoroContext.parentComponent: Component?
     get() = tag()
     set(value) = putTag(value)
 
-internal var HanekokoroContext.onBackPressedCallback: OnBackPressedCallback?
-    get() = tag() ?: parent?.onBackPressedCallback
+internal var HanekokoroContext.backDispatcher: BackDispatcher?
+    get() = tag() ?: parent?.backDispatcher
     set(value) = putTag(value)

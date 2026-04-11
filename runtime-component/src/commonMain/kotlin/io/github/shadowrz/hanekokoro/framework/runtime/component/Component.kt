@@ -18,7 +18,7 @@ open class Component(
 
     fun navigateUp() {
         parent?.onNavigateUp {
-            if (!it) context.onBackPressedCallback?.onBackPressed()
+            if (!it) context.backDispatcher?.back()
         }
     }
 
