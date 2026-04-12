@@ -18,7 +18,7 @@ open class Component(
 
     fun navigateUp() {
         parent?.onNavigateUp {
-            if (!it) context.backDispatcher?.back()
+            if (!it) this.backDispatcher?.back()
         }
     }
 

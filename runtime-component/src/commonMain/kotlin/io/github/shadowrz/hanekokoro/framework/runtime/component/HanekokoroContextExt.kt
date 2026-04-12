@@ -12,6 +12,5 @@ internal var HanekokoroContext.parentComponent: Component?
     get() = tag()
     set(value) = putTag(value)
 
-internal var HanekokoroContext.backDispatcher: BackDispatcher?
-    get() = tag() ?: parent?.backDispatcher
-    set(value) = putTag(value)
+internal val Component.backDispatcher: BackDispatcher?
+    get() = this.backHandler as? BackDispatcher ?: parent?.backDispatcher
