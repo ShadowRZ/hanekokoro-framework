@@ -44,10 +44,6 @@ dokka {
             url("https://kotlinlang.org/api/kotlinx.coroutines/")
             packageListUrl("https://kotlinlang.org/api/kotlinx.coroutines/package-list")
         }
-        externalDocumentationLinks.register("androidx") {
-            url("https://developer.android.google.cn/reference/kotlin/")
-            packageListUrl("https://developer.android.google.cn/reference/kotlin/androidx/package-list")
-        }
     }
     pluginsConfiguration.html {
         footerMessage.set("2025 Yorusaka Miyabi")
