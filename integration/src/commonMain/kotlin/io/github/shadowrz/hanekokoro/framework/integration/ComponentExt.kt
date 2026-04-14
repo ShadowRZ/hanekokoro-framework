@@ -12,7 +12,8 @@ public inline fun <reified C : Component> Component.childComponent(
     hanekokoroApp: HanekokoroApp? = null,
 ): C = (hanekokoroApp ?: this.hanekokoroApp).component<C>(context = context, parent = this, plugins = plugins)
 
-public val Component.hanekokoroApp: HanekokoroApp
+@PublishedApi
+internal val Component.hanekokoroApp: HanekokoroApp
     get() = this.context.hanekokoroApp
 
 @OptIn(InternalHanekokoroApi::class)

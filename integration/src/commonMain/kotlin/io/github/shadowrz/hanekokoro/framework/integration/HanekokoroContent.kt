@@ -19,13 +19,5 @@ public fun <C : Component> HanekokoroContent(
         "The component ${component::class} doesn't have a Compose renderer!"
     }
 
-    val lifecycleOwner = remember(component) {
-        component.lifecycleOwner()
-    }
-
-    CompositionLocalProvider(
-        LocalLifecycleOwner provides lifecycleOwner,
-    ) {
-        renderer.renderCompose(component, modifier = modifier)
-    }
+    renderer.renderCompose(component, modifier = modifier)
 }
