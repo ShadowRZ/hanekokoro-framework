@@ -3,23 +3,27 @@ package io.github.shadowrz.hanekokoro.framework.runtime
 @Deprecated(
     message = "Use io.github.shadowrz.hanekokoro.framework.runtime.component.Component instead",
     replaceWith = ReplaceWith("Component", "io.github.shadowrz.hanekokoro.framework.runtime.component"),
+    level = DeprecationLevel.HIDDEN,
 )
 public typealias Component = io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 
 @Deprecated(
     message = "Use io.github.shadowrz.hanekokoro.framework.runtime.presenter.Presenter instead",
     replaceWith = ReplaceWith("Presenter", "io.github.shadowrz.hanekokoro.framework.runtime.presenter"),
+    level = DeprecationLevel.HIDDEN,
 )
 public typealias Presenter<S> = io.github.shadowrz.hanekokoro.framework.runtime.presenter.Presenter<S>
 
 @Deprecated(
     message = "Use io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin instead",
     replaceWith = ReplaceWith("Plugin", "io.github.shadowrz.hanekokoro.framework.runtime.plugin"),
+    level = DeprecationLevel.HIDDEN,
 )
 public typealias Plugin = io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 
 @Deprecated(
     message = "Use io.github.shadowrz.hanekokoro.framework.runtime.plugin.PluginsOwner instead",
     replaceWith = ReplaceWith("PluginsOwner", "io.github.shadowrz.hanekokoro.framework.runtime.plugin"),
+    level = DeprecationLevel.HIDDEN,
 )
 public typealias PluginsOwner = io.github.shadowrz.hanekokoro.framework.runtime.plugin.PluginsOwner
