@@ -17,8 +17,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":runtime-component"))
+            implementation(project(":runtime-lifecycle"))
+            implementation(project(":runtime-retain"))
             implementation(libs.compose.runtime)
             implementation(libs.compose.ui)
+            implementation(libs.lifecycle.runtime.compose)
         }
     }
 }
