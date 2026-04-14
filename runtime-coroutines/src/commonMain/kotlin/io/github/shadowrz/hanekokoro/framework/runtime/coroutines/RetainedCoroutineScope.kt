@@ -10,15 +10,18 @@ import kotlinx.coroutines.cancel
 import kotlin.coroutines.CoroutineContext
 
 private class RetainedCoroutineScope(
-    private val scope: CoroutineScope,
+    context: CoroutineContext,
 ) : InstanceKeeper.Instance,
-    CoroutineScope by scope {
+    CoroutineScope by CoroutineScope(context = context) {
     override fun onDestroy() {
         this.cancel()
     }
 }
 
-public fun InstanceKeeperOwner.retainedCoroutineScope(context: CoroutineContext = Dispatchers.Main + SupervisorJob()): CoroutineScope =
+/**
+ * Returns a retained [CoroutineScope] bound to the receiver [InstanceKeeperOwner]
+ */
+public fun InstanceKeeperOwner.retainedScope(context: CoroutineContext = Dispatchers.Main + SupervisorJob()): CoroutineScope =
     instanceKeeper.getOrCreate {
-        RetainedCoroutineScope(CoroutineScope(context = context))
+        RetainedCoroutineScope(context = context)
     }
