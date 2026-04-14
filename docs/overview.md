@@ -10,12 +10,6 @@
 
     **Signifient changes may happen at any time.**
 
-!!! warning "Documentation is for unreleased code"
-
-    Consult your local artifact for released versions.
-
-    This is an temporary limitation.
-
 Hanekokoro Framework is @ShadowRZ's own framework for writing applications.
 
 It is inspired from the architecture of [Element X Android][element-x-android],
