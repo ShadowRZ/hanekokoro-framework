@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ComponentContext
 import io.github.shadowrz.hanekokoro.framework.annotations.InternalHanekokoroApi
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
-import io.github.shadowrz.hanekokoro.framework.runtime.component.component
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 
 @OptIn(InternalHanekokoroApi::class)

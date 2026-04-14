@@ -4,8 +4,6 @@ import androidx.compose.runtime.Immutable
 import com.arkivanov.decompose.ComponentContext
 import io.github.shadowrz.hanekokoro.framework.annotations.InternalHanekokoroApi
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
-import io.github.shadowrz.hanekokoro.framework.runtime.component.childComponent
-import io.github.shadowrz.hanekokoro.framework.runtime.component.component
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.runtime.renderer.Renderer
 import kotlin.reflect.KClass
