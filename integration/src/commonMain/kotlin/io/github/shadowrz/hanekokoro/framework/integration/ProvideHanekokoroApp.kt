@@ -6,10 +6,11 @@ import androidx.compose.runtime.NonRestartableComposable
 
 @Composable
 @NonRestartableComposable
-fun ProvideHanekokoroApp(
+public fun ProvideHanekokoroApp(
     hanekokoroApp: HanekokoroApp,
     content: @Composable () -> Unit,
-) = CompositionLocalProvider(
-    LocalHanekokoroApp provides hanekokoroApp,
-    content = content,
-)
+): Unit =
+    CompositionLocalProvider(
+        LocalHanekokoroApp provides hanekokoroApp,
+        content = content,
+    )

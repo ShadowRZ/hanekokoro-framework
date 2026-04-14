@@ -1,5 +1,7 @@
 package io.github.shadowrz.hanekokoro.framework.integration
 
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 
-val LocalHanekokoroApp = staticCompositionLocalOf<HanekokoroApp?> { null }
+public val LocalHanekokoroApp: ProvidableCompositionLocal<HanekokoroApp?> =
+    staticCompositionLocalOf<HanekokoroApp?> { null }

@@ -15,13 +15,17 @@ import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
 @OptIn(InternalHanekokoroApi::class)
 @Composable
 @NonRestartableComposable
-fun <T, C : Component> T.HanekokoroRoot(
+public fun <T, C : Component> T.HanekokoroRoot(
     hanekokoroApp: HanekokoroApp,
     modifier: Modifier = Modifier,
     discardSavedState: Boolean = false,
     isStateSavingAllowed: () -> Boolean = { true },
     factory: (HanekokoroContext) -> C,
-) where T : SavedStateRegistryOwner, T : OnBackPressedDispatcherOwner, T : ViewModelStoreOwner, T : LifecycleOwner =
+): Unit
+where T : SavedStateRegistryOwner,
+      T : OnBackPressedDispatcherOwner,
+      T : ViewModelStoreOwner,
+      T : LifecycleOwner =
     HanekokoroRoot(
         hanekokoroApp = hanekokoroApp,
         modifier = modifier,

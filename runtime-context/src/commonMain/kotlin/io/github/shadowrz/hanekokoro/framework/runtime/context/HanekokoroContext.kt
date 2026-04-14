@@ -7,18 +7,18 @@ import kotlin.reflect.KClass
 // Based on Slack's implmentation.
 
 @Stable
-class HanekokoroContext
+public class HanekokoroContext
     @InternalHanekokoroApi
     constructor(
-        val parent: HanekokoroContext?,
+        public val parent: HanekokoroContext?,
         private val tags: MutableMap<KClass<*>, Any> = mutableMapOf(),
     ) {
         @Suppress("UNCHECKED_CAST")
-        fun <T : Any> tag(klass: KClass<T>): T? = this.tags[klass] as T?
+        public fun <T : Any> tag(klass: KClass<T>): T? = this.tags[klass] as T?
 
-        inline fun <reified T : Any> tag() = tag(klass = T::class)
+        public inline fun <reified T : Any> tag(): T? = tag(klass = T::class)
 
-        fun <T : Any> putTag(
+        public fun <T : Any> putTag(
             klass: KClass<T>,
             value: T?,
         ) {
@@ -29,9 +29,9 @@ class HanekokoroContext
             }
         }
 
-        inline fun <reified T : Any> putTag(value: T?) = putTag(klass = T::class, value = value)
+        public inline fun <reified T : Any> putTag(value: T?): Unit = putTag(klass = T::class, value = value)
 
-        fun clearTags() {
+        public fun clearTags() {
             this.tags.clear()
         }
     }

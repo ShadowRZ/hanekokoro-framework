@@ -9,7 +9,7 @@ import com.arkivanov.essenty.lifecycle.LifecycleOwner as EssentyLifecycleOwner
 /**
  * Creates a [androidx.lifecycle.LifecycleOwner] from an existing [com.arkivanov.essenty.lifecycle.LifecycleOwner].
  * */
-fun EssentyLifecycleOwner.lifecycleOwner(): JetpackLifecycleOwner = DelegateLifecycleOwner(this)
+public fun EssentyLifecycleOwner.lifecycleOwner(): JetpackLifecycleOwner = DelegateLifecycleOwner(this)
 
 private class DelegateLifecycleOwner(
     delegate: EssentyLifecycleOwner,

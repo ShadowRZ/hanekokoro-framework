@@ -1,5 +1,5 @@
 package io.github.shadowrz.hanekokoro.framework.runtime.navigation
 
-fun interface OnNavigateUpCallbackOwner {
-    fun onNavigateUp(onComplete: (Boolean) -> Unit)
+public fun interface OnNavigateUpCallbackOwner {
+    public fun onNavigateUp(onComplete: (Boolean) -> Unit)
 }

@@ -9,13 +9,13 @@ import io.github.shadowrz.hanekokoro.framework.runtime.renderer.Renderer
 import kotlin.reflect.KClass
 
 @Immutable
-class HanekokoroApp private constructor(
+public class HanekokoroApp private constructor(
     builder: Builder,
 ) {
     private val componentFactories: Map<KClass<out Component>, Component.Factory<*>> = builder.componentFactories
     private val renderers: Map<KClass<out Component>, Renderer<*>> = builder.renderers
 
-    inline fun <reified C : Component> component(
+    public inline fun <reified C : Component> component(
         context: ComponentContext,
         parent: Component,
         plugins: List<Plugin> = emptyList(),
@@ -29,7 +29,7 @@ class HanekokoroApp private constructor(
 
     @OptIn(InternalHanekokoroApi::class)
     @Suppress("UNCHECKED_CAST")
-    fun <C : Component> component(
+    public fun <C : Component> component(
         klass: KClass<C>,
         context: ComponentContext,
         parent: Component,
@@ -43,7 +43,7 @@ class HanekokoroApp private constructor(
         }
     }
 
-    inline fun <reified C : Component> component(
+    public inline fun <reified C : Component> component(
         context: ComponentContext,
         plugins: List<Plugin> = emptyList(),
     ): C =
@@ -55,7 +55,7 @@ class HanekokoroApp private constructor(
 
     @OptIn(InternalHanekokoroApi::class)
     @Suppress("UNCHECKED_CAST")
-    fun <C : Component> component(
+    public fun <C : Component> component(
         klass: KClass<C>,
         context: ComponentContext,
         plugins: List<Plugin> = emptyList(),
@@ -71,30 +71,30 @@ class HanekokoroApp private constructor(
         ) as C
     }
 
-    inline fun <reified C : Component> renderer(): Renderer<C> = renderer(C::class)
+    public inline fun <reified C : Component> renderer(): Renderer<C> = renderer(C::class)
 
     @Suppress("UNCHECKED_CAST")
-    fun <C : Component> renderer(klass: KClass<C>): Renderer<C> {
+    public fun <C : Component> renderer(klass: KClass<C>): Renderer<C> {
         val renderer = requireNotNull(renderers[klass]) {
             "Couldn't find renderer for ${klass.qualifiedName}, is it injected properly?"
         }
         return renderer as Renderer<C>
     }
 
-    class Builder {
-        val componentFactories: MutableMap<KClass<out Component>, Component.Factory<*>> = mutableMapOf()
-        val renderers: MutableMap<KClass<out Component>, Renderer<*>> = mutableMapOf()
+    public class Builder {
+        public val componentFactories: MutableMap<KClass<out Component>, Component.Factory<*>> = mutableMapOf()
+        public val renderers: MutableMap<KClass<out Component>, Renderer<*>> = mutableMapOf()
 
-        fun addComponentFactories(factories: Map<KClass<out Component>, Component.Factory<*>>): Builder {
+        public fun addComponentFactories(factories: Map<KClass<out Component>, Component.Factory<*>>): Builder {
             componentFactories += factories
             return this
         }
 
-        fun addRenderers(renderers: Map<KClass<out Component>, Renderer<*>>): Builder {
+        public fun addRenderers(renderers: Map<KClass<out Component>, Renderer<*>>): Builder {
             this.renderers += renderers
             return this
         }
 
-        fun build(): HanekokoroApp = HanekokoroApp(this)
+        public fun build(): HanekokoroApp = HanekokoroApp(this)
     }
 }

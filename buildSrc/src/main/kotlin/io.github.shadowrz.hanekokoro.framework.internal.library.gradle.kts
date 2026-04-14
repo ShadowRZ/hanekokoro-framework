@@ -30,6 +30,7 @@ kotlin {
 
     compilerOptions {
         allWarningsAsErrors = true
+        explicitApi()
     }
 }
 

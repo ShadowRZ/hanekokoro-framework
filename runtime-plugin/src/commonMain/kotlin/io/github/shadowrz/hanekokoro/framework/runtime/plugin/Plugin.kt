@@ -5,4 +5,4 @@ package io.github.shadowrz.hanekokoro.framework.runtime.plugin
  *
  * This is mostly used for parent-child UDF flows.
  */
-interface Plugin
+public interface Plugin

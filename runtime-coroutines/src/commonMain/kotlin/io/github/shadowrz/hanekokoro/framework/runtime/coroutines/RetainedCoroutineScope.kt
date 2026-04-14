@@ -18,7 +18,7 @@ private class RetainedCoroutineScope(
     }
 }
 
-fun InstanceKeeperOwner.retainedCoroutineScope(context: CoroutineContext = Dispatchers.Main + SupervisorJob()): CoroutineScope =
+public fun InstanceKeeperOwner.retainedCoroutineScope(context: CoroutineContext = Dispatchers.Main + SupervisorJob()): CoroutineScope =
     instanceKeeper.getOrCreate {
         RetainedCoroutineScope(CoroutineScope(context = context))
     }

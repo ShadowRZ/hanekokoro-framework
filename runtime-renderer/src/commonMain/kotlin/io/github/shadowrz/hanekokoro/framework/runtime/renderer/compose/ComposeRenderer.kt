@@ -7,7 +7,7 @@ import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
 import io.github.shadowrz.hanekokoro.framework.runtime.renderer.Renderer
 
 @Stable
-abstract class ComposeRenderer<C : Component> : Renderer<C> {
+public abstract class ComposeRenderer<C : Component> : Renderer<C> {
     @Deprecated(
         message = "Do not call render() directly",
         level = DeprecationLevel.HIDDEN,
@@ -18,7 +18,7 @@ abstract class ComposeRenderer<C : Component> : Renderer<C> {
 
     @Suppress("ComposableNaming")
     @Composable
-    fun renderCompose(
+    public fun renderCompose(
         component: C,
         modifier: Modifier = Modifier,
     ) {

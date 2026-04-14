@@ -9,4 +9,4 @@ package io.github.shadowrz.hanekokoro.framework.annotations
             "Please file an issue, describing why this internal API is required, " +
             "so we can provide a stable API instead.",
 )
-annotation class InternalHanekokoroApi
+public annotation class InternalHanekokoroApi

@@ -5,20 +5,20 @@ import kotlin.reflect.KClass
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
-annotation class HanekokoroInject(
+public annotation class HanekokoroInject(
     val scope: KClass<*>,
 ) {
     @MustBeDocumented
     @Retention(AnnotationRetention.RUNTIME)
     @Target(AnnotationTarget.CLASS)
-    annotation class ContributesComponent(
+    public annotation class ContributesComponent(
         val scope: KClass<*>,
     )
 
     @MustBeDocumented
     @Retention(AnnotationRetention.RUNTIME)
     @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
-    annotation class ContributesRenderer(
+    public annotation class ContributesRenderer(
         val scope: KClass<*>,
     )
 }

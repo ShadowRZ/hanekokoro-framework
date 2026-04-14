@@ -10,7 +10,7 @@ import io.github.shadowrz.hanekokoro.framework.runtime.lifecycle.lifecycleOwner
 import io.github.shadowrz.hanekokoro.framework.runtime.renderer.compose.ComposeRenderer
 
 @Composable
-fun <C : Component> HanekokoroContent(
+public fun <C : Component> HanekokoroContent(
     component: C,
     modifier: Modifier = Modifier,
     hanekokoroApp: HanekokoroApp = requireNotNull(LocalHanekokoroApp.current),

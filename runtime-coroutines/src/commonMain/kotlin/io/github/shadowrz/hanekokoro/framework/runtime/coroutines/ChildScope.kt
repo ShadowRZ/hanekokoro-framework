@@ -18,7 +18,7 @@ import kotlin.coroutines.EmptyCoroutineContext
  *
  * @param context Additional contexts for the new scope, such as [kotlinx.coroutines.CoroutineDispatcher]
  */
-fun CoroutineScope.coroutineScope(context: CoroutineContext = EmptyCoroutineContext): CoroutineScope {
+public fun CoroutineScope.coroutineScope(context: CoroutineContext = EmptyCoroutineContext): CoroutineScope {
     val job = coroutineContext.job
 
     return CoroutineScope(coroutineContext + context + Job(parent = job))
@@ -35,7 +35,7 @@ fun CoroutineScope.coroutineScope(context: CoroutineContext = EmptyCoroutineCont
  *
  * @param context Additional contexts for the new scope, such as [kotlinx.coroutines.CoroutineDispatcher]
  */
-fun CoroutineScope.supervisorScope(context: CoroutineContext = EmptyCoroutineContext): CoroutineScope {
+public fun CoroutineScope.supervisorScope(context: CoroutineContext = EmptyCoroutineContext): CoroutineScope {
     val job = coroutineContext.job
 
     return CoroutineScope(coroutineContext + context + SupervisorJob(parent = job))

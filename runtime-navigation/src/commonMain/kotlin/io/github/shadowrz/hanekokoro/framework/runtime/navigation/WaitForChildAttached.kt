@@ -7,7 +7,7 @@ import com.arkivanov.decompose.value.operator.map
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-suspend inline fun <reified Resolved : Any> Value<ChildStack<*, *>>.waitForChildAttached(): Resolved {
+public suspend inline fun <reified Resolved : Any> Value<ChildStack<*, *>>.waitForChildAttached(): Resolved {
     val head = this.map { it.items }
     return suspendCancellableCoroutine { continuation ->
         val subscription =
@@ -31,7 +31,7 @@ suspend inline fun <reified Resolved : Any> Value<ChildStack<*, *>>.waitForChild
     }
 }
 
-suspend inline fun <NavTarget : Any, reified Resolved : Any> Value<ChildStack<NavTarget, Resolved>>.waitForChildAttached(
+public suspend inline fun <NavTarget : Any, reified Resolved : Any> Value<ChildStack<NavTarget, Resolved>>.waitForChildAttached(
     crossinline predicate: (NavTarget) -> Boolean,
 ): Resolved {
     val head = this.map { it.items }
@@ -54,7 +54,7 @@ suspend inline fun <NavTarget : Any, reified Resolved : Any> Value<ChildStack<Na
     }
 }
 
-suspend inline fun <reified Resolved : Any> Value<ChildSlot<*, *>>.waitForChildSlot(): Resolved =
+public suspend inline fun <reified Resolved : Any> Value<ChildSlot<*, *>>.waitForChildSlot(): Resolved =
     suspendCancellableCoroutine { continuation ->
         val subscription =
             this.subscribe { slot ->

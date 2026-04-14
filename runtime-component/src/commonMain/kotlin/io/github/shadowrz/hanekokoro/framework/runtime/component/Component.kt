@@ -8,15 +8,15 @@ import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.PluginsOwner
 
 @Stable
-open class Component(
-    val context: HanekokoroContext,
+public open class Component(
+    public val context: HanekokoroContext,
     override val plugins: List<Plugin> = emptyList(),
 ) : ComponentContext by context.componentContext,
     PluginsOwner,
     OnNavigateUpCallbackOwner {
-    val parent = context.parentComponent
+    public val parent: Component? = context.parentComponent
 
-    fun navigateUp() {
+    public fun navigateUp() {
         parent?.onNavigateUp {
             if (!it) this.backDispatcher?.back()
         }
@@ -26,8 +26,8 @@ open class Component(
         parent?.onNavigateUp(onComplete)
     }
 
-    fun interface Factory<out C : Component> {
-        fun create(
+    public fun interface Factory<out C : Component> {
+        public fun create(
             context: HanekokoroContext,
             plugins: List<Plugin>,
         ): C

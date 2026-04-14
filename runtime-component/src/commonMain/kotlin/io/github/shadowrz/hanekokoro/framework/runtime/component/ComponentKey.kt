@@ -14,6 +14,6 @@ import kotlin.reflect.KClass
 )
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
-annotation class ComponentKey(
+public annotation class ComponentKey(
     val value: KClass<out Component>,
 )
