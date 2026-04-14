@@ -1,5 +1,8 @@
+
 plugins {
     id("io.github.shadowrz.hanekokoro.framework.internal.library")
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.maven.publish)
 }
 
@@ -8,21 +11,14 @@ version = "0.2.2"
 
 kotlin {
     android {
-        namespace = "io.github.shadowrz.hanekokoro.framework.runtime"
+        namespace = "io.github.shadowrz.hanekokoro.framework.runtime.retain"
     }
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":markers"))
-            api(project(":runtime-component"))
-            api(project(":runtime-context"))
-            api(project(":runtime-coroutines"))
-            api(project(":runtime-lifecycle"))
-            api(project(":runtime-navigation"))
-            api(project(":runtime-plugin"))
-            api(project(":runtime-presenter"))
-            api(project(":runtime-renderer"))
-            api(project(":runtime-retain"))
+            implementation(libs.essenty.instancekeeper)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
         }
     }
 }
@@ -32,11 +28,11 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "runtime", version.toString())
+    coordinates(group.toString(), "runtime-retain", version.toString())
 
     pom {
-        name = "Hanekokoro Framework Runtime"
-        description = "Runtime code for Hanekokoro Framework"
+        name = "Hanekokoro Framework Runtime Retain"
+        description = "Retained objects for Hanekokoro Framework"
         inceptionYear = "2025"
         url = "https://github.com/ShadowRZ/hanekokoro-framework"
 
