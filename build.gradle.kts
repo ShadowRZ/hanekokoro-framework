@@ -17,6 +17,7 @@ dependencies {
     dokka(project(":runtime-plugin"))
     dokka(project(":runtime-presenter"))
     dokka(project(":runtime-renderer"))
+    dokka(project(":runtime-retain"))
 }
 
 dokka {
