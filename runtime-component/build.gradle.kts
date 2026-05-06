@@ -19,6 +19,7 @@ kotlin {
             api(libs.decompose)
             implementation(project(":annotations"))
             implementation(libs.compose.runtime)
+            implementation(libs.essenty.lifecycle.coroutines)
             implementation(libs.metro.runtime)
         }
     }
