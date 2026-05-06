@@ -179,7 +179,7 @@ features = [
   # This feature turns on navigation elements in the footer that allow the
   # user to navigate to a next or previous page.
   # https://zensical.org/docs/setup/footer/#navigation
-  #"navigation.footer",
+  # "navigation.footer",
 
   # When section index pages are enabled, documents can be directly attached
   # to sections, which is particularly useful for providing overview pages.
@@ -200,12 +200,12 @@ features = [
   # In order to provide a better user experience on slow connections when
   # using instant navigation, a progress indicator can be enabled.
   # https://zensical.org/docs/setup/navigation/#progress-indicator
-  #"navigation.instant.progress",
+  "navigation.instant.progress",
 
   # When navigation paths are activated, a breadcrumb navigation is rendered
   # above the title of each page
   # https://zensical.org/docs/setup/navigation/#navigation-path
-  #"navigation.path",
+  "navigation.path",
 
   # When pruning is enabled, only the visible navigation items are included
   # in the rendered HTML, reducing the size of the built site by 33% or more.
@@ -220,12 +220,12 @@ features = [
   # When tabs are enabled, top-level sections are rendered in a menu layer
   # below the header for viewports above 1220px, but remain as-is on mobile.
   # https://zensical.org/docs/setup/navigation/#navigation-tabs
-  #"navigation.tabs",
+  # "navigation.tabs",
 
   # When sticky tabs are enabled, navigation tabs will lock below the header
   # and always remain visible when scrolling down.
   # https://zensical.org/docs/setup/navigation/#sticky-navigation-tabs
-  "navigation.tabs.sticky",
+  # "navigation.tabs.sticky",
 
   # A back-to-top button can be shown when the user, after scrolling down,
   # starts to scroll up again.
@@ -246,7 +246,7 @@ features = [
   # When anchor following for the table of contents is enabled, the sidebar
   # is automatically scrolled so that the active anchor is always visible.
   # https://zensical.org/docs/setup/navigation/#anchor-following
-  # "toc.follow",
+  "toc.follow",
 
   # When navigation integration for the table of contents is enabled, it is
   # always rendered as part of the navigation sidebar on the left.
@@ -263,19 +263,31 @@ features = [
 # Read more:
 # - https://zensical.org/docs/setup/colors/
 # ----------------------------------------------------------------------------
+# Palette toggle for automatic mode
 [[project.theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "pink"
+accent = "pink"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
 scheme = "default"
 primary = "pink"
 accent = "pink"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
 
+# Palette toggle for dark mode
 [[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 primary = "pink"
 accent = "pink"
 toggle.icon = "lucide/moon"
-toggle.name = "Switch to light mode"
+toggle.name = "Switch to system preference"
 
 # ----------------------------------------------------------------------------
 # In the "font" subsection you can configure the fonts used. By default, fonts
@@ -283,9 +295,9 @@ toggle.name = "Switch to light mode"
 # of suitably licensed fonts. There are options for a normal text font and for
 # a monospaced font used in code blocks.
 # ----------------------------------------------------------------------------
-#[project.theme.font]
-#text = "Inter"
-#code = "Jetbrains Mono"
+[project.theme.font]
+text = "Rubik"
+code = "JetBrains Mono"
 
 # ----------------------------------------------------------------------------
 # You can configure your own logo to be shown in the header using the "logo"
