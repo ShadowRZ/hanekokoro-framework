@@ -27,7 +27,7 @@ fun RootRenderer(
     modifier: Modifier = Modifier,
 ) {
     Children(
-        component.childStack,
+        component.navModel.children,
         modifier = modifier,
         animation = stackAnimation { fade() + slide() },
     ) {

@@ -1,6 +1,7 @@
 package io.github.shadowrz.hanekokoro.framework.sample.app.screens.root
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
@@ -11,7 +12,11 @@ import dev.zacsweers.metro.AssistedInject
 import io.github.shadowrz.hanekokoro.framework.annotations.HanekokoroInject
 import io.github.shadowrz.hanekokoro.framework.integration.childComponent
 import io.github.shadowrz.hanekokoro.framework.runtime.component.Component
+import io.github.shadowrz.hanekokoro.framework.runtime.component.ParentComponent
 import io.github.shadowrz.hanekokoro.framework.runtime.context.HanekokoroContext
+import io.github.shadowrz.hanekokoro.framework.runtime.navigation.BackStack
+import io.github.shadowrz.hanekokoro.framework.runtime.navigation.NavModel
+import io.github.shadowrz.hanekokoro.framework.runtime.navigation.backStack
 import io.github.shadowrz.hanekokoro.framework.runtime.plugin.Plugin
 import io.github.shadowrz.hanekokoro.framework.sample.app.screens.counter.CounterComponent
 import kotlinx.serialization.Serializable
@@ -21,18 +26,13 @@ import kotlinx.serialization.Serializable
 class RootComponent(
     @Assisted context: HanekokoroContext,
     @Assisted plugins: List<Plugin> = emptyList(),
-) : Component(
+) : ParentComponent<RootComponent.NavTarget, RootComponent.Resolved>(
         context = context,
         plugins = plugins,
     ) {
-    internal val navigation: StackNavigation<NavTarget> = StackNavigation()
-
-    internal val childStack = childStack(
-        source = navigation,
+    override val navModel: BackStack<NavTarget, Resolved> = backStack(
         serializer = NavTarget.serializer(),
         initialConfiguration = NavTarget.Root,
-        handleBackButton = true,
-        childFactory = ::resolve,
     )
 
     @Serializable
@@ -51,7 +51,7 @@ class RootComponent(
         ) : Resolved
     }
 
-    private fun resolve(
+    override fun resolve(
         navTarget: NavTarget,
         context: ComponentContext,
     ): Resolved =
@@ -61,10 +61,6 @@ class RootComponent(
         }
 
     internal fun onNavTarget(navTarget: NavTarget) {
-        navigation.pushNew(navTarget)
-    }
-
-    override fun onNavigateUp(onComplete: (Boolean) -> Unit) {
-        navigation.pop(onComplete)
+        navModel.pushNew(navTarget)
     }
 }
