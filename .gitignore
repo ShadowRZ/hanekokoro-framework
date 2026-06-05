@@ -3,6 +3,7 @@
 .idea
 .DS_Store
 build
+!plugins/src/main/kotlin/io/github/shadowrz/hanekokoro/framework/build
 captures
 .externalNativeBuild
 .cxx
