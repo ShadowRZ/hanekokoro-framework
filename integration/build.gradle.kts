@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.shadowrz.hanekokoro.framework"
-version = "0.3.0"
+version = "0.4.0"
 
 kotlin {
     android {
