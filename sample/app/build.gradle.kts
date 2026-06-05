@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 group = "io.github.shadowrz.hanekokoro.framework.sample.app"
 
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
     // kotlin("android")
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)

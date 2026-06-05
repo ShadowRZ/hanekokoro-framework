@@ -1,4 +1,4 @@
-rootProject.name = "buildSrc"
+rootProject.name = "hanekokoro-framework-plugins"
 
 pluginManagement {
     repositories {
@@ -15,5 +15,11 @@ dependencyResolutionManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+    }
+
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
     }
 }

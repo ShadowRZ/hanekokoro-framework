@@ -14,6 +14,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "hanekokoro-framework"
+includeBuild("plugins")
 include(":annotations")
 include(":codegen")
 include(":integration")
